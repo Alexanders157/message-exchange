@@ -17,6 +17,12 @@ class MessageController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'content' => 'required|string',
+        ], [
+            'content.required' => 'Пожалуйста, введите сообщение',
+        ]);
+
         $message = new Message;
         $message->content = $request->content;
         $message->slug = Str::random(10);
@@ -24,7 +30,6 @@ class MessageController extends Controller
 
         return redirect()->route('show', $message->slug);
     }
-
 
     public function show($slug)
     {

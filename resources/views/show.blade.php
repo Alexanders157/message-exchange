@@ -26,6 +26,7 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             height: 300px;
+            position: relative;
         }
         .message-content {
             font-size: 16px;
@@ -37,18 +38,30 @@
             overflow-wrap: break-word;
             overflow-y: auto;
             max-height: 200px;
-            margin-top: -20px; /
+            margin-top: -20px;
         }
         .message-link {
             color: #007bff;
             margin-top: -10px;
+        }
+
+        .create-message-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
 
 <div class="message-container">
-    <h1 style="margin-top: -20px;"> Сообщение: </h1>
+    <a href="{{ url('create') }}" class="create-message-button">Создать сообщение</a> <h1 style="margin-top: -20px;"> Сообщение: </h1>
     <br>
     <p class="message-content">{{ $message->content }}</p>
     <br>
